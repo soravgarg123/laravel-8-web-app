@@ -1,0 +1,203 @@
+* {padding : 0; margin: 0}
+
+:root {
+	--primaryClr: #2f94e2;
+	--secondaryClr: #31ffe8;
+	--whiteClr: #fff;
+	--darkClr: #000;
+	--grayClr: #6c757d;
+}
+
+
+/*=============== Common CSS ===============*/
+html, body {
+	font-size: 14px;
+    font-family: 'Lato', "Helvetica Neue", Helvetica, Roboto, sans-serif;
+}
+.burger {
+	padding: 40px 0;
+}
+button:focus {
+    outline: 0;
+    outline: none;
+    /*box-shadow: none;*/
+}
+ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a {
+	transition: all 0.5s ease-in-out;
+}
+a:hover {
+	text-decoration: none;
+}
+
+
+/*=============== Header CSS ===============*/
+.paperForm .logoBox {
+	text-align: center;
+    margin-top: 20px;
+}
+.paperForm .formHeading h2 {
+	color: #222;
+	font-weight: 500;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.paperForm {
+	max-width: 700px;
+    margin: 0 auto 20px;
+}
+.paperForm form {
+    width: 700px;
+    max-width: 100%;
+    margin: 0px auto;
+    padding: 25px;
+    box-shadow: 0 1.2px 6px -2px rgb(0 0 0 / 60%);
+}
+.paperForm form .form-control {
+    height: calc(1.5em + 2.5rem + 2px);
+    box-shadow: 0 2px 18px rgb(0 0 0 / 15%);
+}
+.paperForm form .form-check {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px -2px rgb(0 0 0 / 50%);
+}
+.paperForm form .form-check-input {
+    width: 0.60rem;
+    height: 0.70rem;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-radius: 2px;
+}
+.paperForm form .form-check:hover {
+    box-shadow: 0 2px 6px -2px rgb(0 0 0 / 80%);
+}
+.paperForm form .form-check.selected {
+    background: #2E9DD2;
+    color: #fff;
+}
+.paperForm form .form-check-input[type=checkbox]:checked {
+    background: #c0e1f1;
+    border: 0 !important;
+}
+.paperForm form .form-check-input[type=checkbox]:checked:after {
+    width: 0.25rem;
+    height: 0.5rem;
+    margin-left: 0.17rem;
+    margin-top: 1px;
+    border-color: #2e9dd2;
+}
+.paperForm form .form-outline .form-control~.form-notch div {
+    border-color: #e4e4e4;
+}
+.paperForm form .btn {
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 14px;
+	background: #27aded;
+    box-shadow: 0 4px 14px -6px rgb(0 0 0 / 80%);
+}
+.paperForm form .btn.btn-danger {
+	background: #f93154;
+}
+.paperForm form .btn-primary:not([disabled]):not(.disabled):active,
+.paperForm form .btn-primary:not([disabled]):not(.disabled).active,
+.paperForm form .show>.btn-primary.dropdown-toggle,
+.paperForm form .btn-primary:hover {
+	background: #2E9DD2 !important;
+}
+.paperForm form .btn-danger:not([disabled]):not(.disabled):active,
+.paperForm form .btn-danger:not([disabled]):not(.disabled).active,
+.paperForm form .show>.btn-danger.dropdown-toggle,
+.paperForm form .btn-danger:hover {
+	background: #f80c35 !important;
+}
+.dropdown #dLabel {
+    width: 100%;
+    height: 56px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: solid 1px #e4e4e4;
+    text-align: left;
+    padding: 7.5px 15px;
+    color: #4f4f4f;
+    letter-spacing: 0.7px;
+    box-shadow: 0 2px 18px rgb(0 0 0 / 15%);
+}
+.dropdown .caret {
+    float: right;
+    margin-top: 9px;
+    display: block;
+}
+.dropdown .dropdown-menu {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 6px 18px rgb(0 0 0 / 22%);
+}
+.dropdown button:hover, .dropdown button:focus {
+    border: none;
+    outline: 0;
+}
+.dropdown.open button#dLabel {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23);
+    border: solid 1px #666;
+    border-bottom: none;
+}
+.dropdown.open ul {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23);
+    border: solid 1px #666;
+    border-top: none;
+    height: 200px;
+    overflow-y: scroll;
+}
+.dropdown .dropdown-menu li {
+    line-height: 1.5;
+    letter-spacing: 0.7px;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 7.5px 15px;
+    border-top: solid 1px #f3f3f3;
+}
+.dropdown .dropdown-menu li:hover {
+    background-color: #ccc;
+}
+
+canvas.size_large {
+    border: 1px solid #e0e0e0;
+}
+
+@media only screen and (max-width: 767px) {
+	.paperForm form {
+	    width: 94%;
+	    max-width: 94%;
+		padding: 15px;
+	}
+}
+
+div#card-element {
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 2px;
+}
+.StripeElement, .StripeElement--focus {
+  border: 1px solid #eee;
+  box-shadow: 0 2px 18px rgb(0 0 0 / 15%);
+  background-color: #fff;
+  padding-left: 10px;
+}
