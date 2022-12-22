@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Configurations;
 use App\Models\User;
+use App\Rules\ValidateUserCurrentPassword;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Rules\ValidateGuid;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -98,7 +100,7 @@ class DashboardController extends Controller
         }
 
         /* Update user */
-        User::where('id', '=', session()->get('id'))->update([
+        User::where('id', '=', $request->post('user_id'))->update([
                                     'name' => $request->post('name'),
                                     'gender' => $request->post('gender'),
                                     'email' => $request->post('email'),
@@ -109,6 +111,35 @@ class DashboardController extends Controller
         return response()->json([
             'status' => 200, 
             'message' => "Profile details updated successfully."
+        ], 200);
+    }
+
+    /**
+	 * Function Name: change_password
+	 * Description:   To admin change password
+	 */
+    public function change_password(Request $request)
+    {
+        /* Validate Request */
+        $validator = Validator::make($request->post(), [
+            'current_password' => ['required', new ValidateUserCurrentPassword($request->post('user_id'))],
+            'new_password'     => 'required|min:6|different:current_password',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                    'status' => 500, 
+                    'message' => $validator->errors()->first()
+                ], 200);
+        }
+
+        /* Update user */
+        User::where('id', '=', $request->post('user_id'))->update(['password' => Hash::make($request->post('new_password'))]);
+
+        /* Return Success */
+        return response()->json([
+            'status' => 200, 
+            'message' => "Password changed successfully."
         ], 200);
     }
 }

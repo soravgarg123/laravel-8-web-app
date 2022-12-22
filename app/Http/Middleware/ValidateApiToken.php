@@ -38,6 +38,8 @@ class ValidateApiToken
         	return response()->json(['status'=> 502,'message' => 'Session expired, please re-login.'], 502);
         }
 
+        $request->merge(['user_id' => $user_data->id]);
+
         /* Update Last Activity */
         DB::table('users')->where('id', $user_data->id)->update(['last_activity' => date('Y-m-d H:i:s')]);
         

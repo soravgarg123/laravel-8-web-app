@@ -46,6 +46,20 @@ class DashboardController extends Controller
 	}
 
     /**
+	 * Function Name: change_password
+	 * Description:   To change admin password view
+	 */
+	public function change_password()
+	{
+
+		$data['title'] = "Change Password";
+		$data['js']    = array(
+							'../assets/admin/js/custom/dashoard.js'
+						);	
+        return view('admin/dashboard/change-password')->with($data);
+	}
+
+    /**
      * Function Name: logout
      * Description:   To admin logout
      */

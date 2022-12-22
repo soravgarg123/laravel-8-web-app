@@ -29,7 +29,7 @@ form_object.validate({
     },
     submitHandler: function() {
         $.ajax({
-            url: api_url + 'dashboard/change_password',
+            url: api_url + 'change/password',
             type:"POST",
             data: $('#profile-form').serialize(),
             success: function(resp){
