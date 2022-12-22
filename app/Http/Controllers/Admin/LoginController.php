@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Configurations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +20,7 @@ class LoginController extends Controller
         $data = array('title' => 'Admin Login');
 
         /* Get Configuration */
-        $data['configurations'] = array_column(DB::table('configurations')->whereIn('configuration_name', array('website_name', 'website_logo'))->get()->toArray(), 'configuration_value', 'configuration_name');
+        $data['configurations'] = array_column(Configurations::whereIn('configuration_name', array('website_name','website_logo'))->get()->toArray(), 'configuration_value', 'configuration_name');
         return view('admin/login')->with($data);
     }
 
@@ -63,13 +64,13 @@ class LoginController extends Controller
             $session_data['last_login']        = date('Y-m-d H:i:s');
 
             /* Set User Session */
-            $request->session()->put('admin_user', $session_data);
+            session()->put('admin_user', $session_data);
 
             /* Get Configuration */
-            $configurations = array_column(DB::table('configurations')->whereIn('configuration_name', array('website_name', 'website_logo'))->get()->toArray(), 'configuration_value', 'configuration_name');
+            $configurations = array_column(Configurations::whereIn('configuration_name', array('website_name','website_logo'))->get()->toArray(), 'configuration_value', 'configuration_name');
 
             /* Set Configurations Session */
-            $request->session()->put('configurations', $configurations);
+            session()->put('configurations', $configurations);
             
             session()->flash('login_success', 'Logged-in successfully');
             return redirect('/admin/dashboard');

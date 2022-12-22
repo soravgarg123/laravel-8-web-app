@@ -1,6 +1,4 @@
 @include('admin/includes/header')
 @include('admin/includes/sidebar')
-<div class="container">
-    @yield('main-section')
-</div>
+@yield('main-section')
 @include('admin/includes/footer')

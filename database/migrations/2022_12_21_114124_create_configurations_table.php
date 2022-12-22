@@ -17,6 +17,7 @@ class CreateConfigurationsTable extends Migration
             $table->id('configuration_id');
             $table->string('configuration_name', 100);
             $table->text('configuration_value');
+            $table->timestamps();
         });
     }
 

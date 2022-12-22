@@ -1,3 +1,6 @@
+<?php 
+    $website_name = session('configurations')['website_name'];
+?>
 <footer id="footer">
     Copyright © {{date('Y')}} {{$website_name}}
 </footer>

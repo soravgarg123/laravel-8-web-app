@@ -16,7 +16,7 @@ class CreateUserTypesTable extends Migration
         Schema::create('user_types', function (Blueprint $table) {
             $table->id();
             $table->uuid('user_type_guid')->unique();
-            $table->string('user_type_name', 100);
+            $table->string('user_type_name', 100)->unique();
             $table->enum('is_admin', ['Yes', 'No']);
             $table->timestamps();
         });

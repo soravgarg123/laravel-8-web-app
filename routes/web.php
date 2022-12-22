@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\LoginController;
-use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ConfigurationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::group(['prefix' => '/admin/', 'middleware' => 'not.loogedin'], function()
 Route::group(['prefix' => '/admin/', 'middleware' => 'loogedin'], function(){
     Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('dashboard/logout/{token?}', [DashboardController::class, 'logout']);
+    
+    Route::get('configurations', [ConfigurationsController::class, 'index']);
 });

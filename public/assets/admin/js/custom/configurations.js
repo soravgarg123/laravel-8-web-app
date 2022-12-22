@@ -38,7 +38,7 @@ form_object.validate({
     submitHandler: function() {
         var formData = new FormData($(".update-configuration-form")[0]);
         $.ajax({
-            url: api_url + 'dashboard/update_configurations',
+            url: api_url + 'configurations/update',
             type:"POST",
             data: formData,
             dataType : "JSON",   

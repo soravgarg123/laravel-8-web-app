@@ -21,7 +21,7 @@
         <div class="lc-block toggled" id="l-login">
             <form id="login-form" method="POST">
                 @if(!empty($configurations['website_name']))
-                    <div class="lcb-float" style="margin-bottom:10px;"><img src="{{ env('APP_URL').'uploads/logo/'.$configurations['website_logo'] }}" alt="logo"></div>
+                    <div class="lcb-float" style="margin-bottom:10px;"><img src="{{ url('uploads/logo/') }}/{{ $configurations['website_logo'] }}" alt="logo"></div>
                 @endif
                  <strong>Login</strong><br/><br/>
                 @csrf;

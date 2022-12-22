@@ -28,16 +28,16 @@ class LoggedInUser
         $login_session_key = Session::get('admin_user')['login_session_key'];
         $user_data = DB::table('users')->select('id','user_status', 'last_activity')->where('remember_token', $login_session_key)->first();
         if(empty($user_data)){
-			Session::put('error','Session disconnected, please login.');
+			Session::flash('error','Session disconnected, please login.');
 			$IsActive = "No";
 		}elseif ($user_data && $user_data->user_status == 'Pending') {
-            Session::put('error',"You have not activated your account yet, please verify your email address first.");
+            Session::flash('error',"You have not activated your account yet, please verify your email address first.");
             $IsActive = "No";
         }elseif ($user_data && $user_data->user_status == 'Blocked') {
-            Session::put('error',"Your account has been blocked. Please contact the Admin for more info.");
+            Session::flash('error',"Your account has been blocked. Please contact the Admin for more info.");
             $IsActive = "No";
         }elseif($user_data && (strtotime(date('Y-m-d H:i:s')) - strtotime($user_data->last_activity)) >= (Config::get('app.session_expiration_hours') * 3600)){
-        	Session::put('error','Session disconnected, please login.');
+        	Session::flash('error','Session disconnected, please login.');
             $IsActive = "No";
         }
 
@@ -45,7 +45,7 @@ class LoggedInUser
         if($IsActive == 'No'){
 
         	/* Delete Session Key */
-			if(!empty($login_session_key)){
+			if(!empty($login_session_key) && !empty($user_data)){
                 DB::table('users')->where('id', $user_data->id)->update(['remember_token' => NULL, 'last_activity' => NULL]);
 			}
 			

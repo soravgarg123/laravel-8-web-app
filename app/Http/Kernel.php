@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\PreventBrowserBackHistory::class
         ],
 
         'api' => [
@@ -65,6 +66,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'not.loogedin' => \App\Http\Middleware\NotLoggedInUser::class,
-        'loogedin' => \App\Http\Middleware\LoggedInUser::class
+        'loogedin' => \App\Http\Middleware\LoggedInUser::class,
+        'auth.token' => \App\Http\Middleware\ValidateApiToken::class
     ];
 }

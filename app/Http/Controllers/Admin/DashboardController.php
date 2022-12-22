@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -17,7 +16,6 @@ class DashboardController extends Controller
     {
         $data['title']  = "Dashboard";
 		$data['module'] = "dashboard";
-        $data['website_name'] = session('configurations')['website_name'];
 		$data['js']     =  array(
 								'../assets/admin/js/custom/dashoard.js'
 							);
