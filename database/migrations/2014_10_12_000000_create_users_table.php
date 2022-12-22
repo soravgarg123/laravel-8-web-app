@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone_number', 20)->nullable();
+            $table->enum('gender', ['Male', 'Female', 'Other'])->default('Male');
             $table->rememberToken();
             $table->enum('user_status', ['Pending', 'Verified', 'Blocked'])->default('Pending');
             $table->timestamp('last_login')->nullable();

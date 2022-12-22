@@ -25,6 +25,27 @@ class DashboardController extends Controller
     }
 
     /**
+	 * Function Name: edit_profile
+	 * Description:   To edit profile view
+	 */
+	public function edit_profile()
+	{
+		$data['title']  = "Edit Profile";
+		$data['module'] = "profile";
+		$data['css']   = array(
+							'../assets/admin/vendors/chosen_v1.4.2/chosen.min.css'
+						);
+		$data['js']    = array(
+			                '../assets/admin/vendors/chosen_v1.4.2/chosen.jquery.min.js',
+							'../assets/admin/js/custom/dashoard.js'
+						);	
+
+		/* To Get My Profile Details */
+        $data['details'] = DB::table('users')->select('user_guid','name', 'email', 'phone_number', 'gender')->where('id', session()->get('admin_user')['user_id'])->first();
+        return view('admin/dashboard/edit-profile')->with($data);
+	}
+
+    /**
      * Function Name: logout
      * Description:   To admin logout
      */
@@ -41,4 +62,6 @@ class DashboardController extends Controller
         session()->flash('logout', 'Yes');
         return redirect('admin/login');
     }
+
+
 }

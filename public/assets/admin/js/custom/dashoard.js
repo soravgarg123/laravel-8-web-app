@@ -76,7 +76,7 @@ form_object.validate({
     },
     submitHandler: function() {
         $.ajax({
-            url: api_url + 'dashboard/edit_profile',
+            url: api_url + 'profile/update',
             type:"POST",
             data: $('.edit-profile-form').serialize(),
             success: function(resp){

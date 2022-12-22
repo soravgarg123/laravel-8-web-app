@@ -13,9 +13,6 @@ class ConfigurationsController extends Controller
 	 */
     public function index() 
 	{
-
-		// pr(session()->all());
-		
 		$data['title'] = "Configurations";
 		$data['module']= "configurations";
 		$data['css']   = array(

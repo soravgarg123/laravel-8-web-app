@@ -234,4 +234,6 @@ return [
 
     'session_expiration_hours' => 6, // 6 hours
 
+    'max_amount_limit' => 3000, 
+
 ];

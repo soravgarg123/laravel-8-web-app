@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Configurations;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Rules\ValidateGuid;
 
 class DashboardController extends Controller
 {
@@ -72,10 +74,41 @@ class DashboardController extends Controller
             'status' => 200, 
             'message' => "Configurations updated successfully."
         ], 200);
-        
+    }
 
+    /**
+	 * Function Name: update_profile
+	 * Description:   To update user profile
+	 */
+    public function update_profile(Request $request)
+    {
+        /* Validate Request */
+        $validator = Validator::make($request->post(), [
+            'user_guid' => ['required', 'uuid', new ValidateGuid('users','id')],
+            'name'      => 'required',
+            'gender'    => ['required', Rule::in(['Male', 'Female', 'Other'])],
+            'email'     => 'required|email',
+            'phone_number' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                    'status' => 500, 
+                    'message' => $validator->errors()->first()
+                ], 200);
+        }
 
-        
-        
+        /* Update user */
+        User::where('id', '=', session()->get('id'))->update([
+                                    'name' => $request->post('name'),
+                                    'gender' => $request->post('gender'),
+                                    'email' => $request->post('email'),
+                                    'phone_number' => $request->post('phone_number')
+                                ]);
+
+        /* Return Success */
+        return response()->json([
+            'status' => 200, 
+            'message' => "Profile details updated successfully."
+        ], 200);
     }
 }

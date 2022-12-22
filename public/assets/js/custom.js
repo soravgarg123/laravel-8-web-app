@@ -84,7 +84,7 @@ $("#payment-form").submit(async function(event) {
     form_data.append('stripe_token', token.id);
     form_data.append('client_ip', token.client_ip);
     $.ajax({
-            url  : "api/user/submit",
+            url  : "api/user/payment",
             type : "POST",
             data : form_data,   
             dataType : "JSON",   

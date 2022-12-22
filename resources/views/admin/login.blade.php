@@ -78,12 +78,10 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 @if(Session::has('error'))
-                    let errorMsg = "{{ Session::get('error')  }}";
-                    showToaster('error','Error !',errorMsg)
+                    showToaster('error','Error !',"{{ Session::get('error')  }}")
                 @endif
                 @if(Session::has('success'))
-                    let successMsg = "{{ Session::get('success')  }}";
-                    showToaster('success','Success !',successMsg)
+                    showToaster('success','Success !',"{{ Session::get('success')  }}")
                 @endif
                 @if(Session::has('logout'))
                     localStorage.removeItem('login_session_key');
