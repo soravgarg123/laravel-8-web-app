@@ -33,5 +33,6 @@ Route::group(['prefix' => '/admin/', 'middleware' => 'loggedin'], function(){
     Route::get('change-password', [DashboardController::class, 'change_password']);
     Route::get('dashboard/logout/{token?}', [DashboardController::class, 'logout']);
     Route::get('orders/list', [OrdersController::class, 'list']);
+    Route::get('orders/details/{order_guid}', [OrdersController::class, 'details']);
     Route::get('configurations', [ConfigurationsController::class, 'index']);
 });

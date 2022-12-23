@@ -38,7 +38,6 @@ class UserController extends Controller
 
         /* Get Configs */
         $configurations = array_column(Configurations::all()->toArray(), 'configuration_value', 'configuration_name');
-        $response = array();
 
         /* Stripe Client */
         $stripe = new StripeClient($configurations['stripe_secret_key']);

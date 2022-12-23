@@ -86,3 +86,27 @@ if (!function_exists('convertDateTime')) {
     return $convertedDateTime;
   }
 }
+
+/**
+ * [To get user status color]
+ * @param string $status
+ */
+if (!function_exists('getUserStatusColor')) {
+  function getUserStatusColor($status)
+  {
+    switch ($status) {
+      case 'Pending':
+        return '#ff9800';
+        break;
+      case 'Success':
+        return '#4caf50';
+        break;
+      case 'Failed':
+        return '#f44336';
+        break;
+      case 'Cancelled':
+        return '#f55a4e';
+        break;
+    }
+  }
+}

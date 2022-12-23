@@ -14,17 +14,17 @@ class ValidateGuid implements Rule
      * @param integer $id
     */
     public $table;
-    public $id_field;
+    public $primary_key;
 
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($table,$id_field)
+    public function __construct($table,$primary_key)
     {
         $this->table = $table;
-        $this->id_field = $id_field;
+        $this->primary_key = $primary_key;
     }
 
     /**
@@ -37,11 +37,11 @@ class ValidateGuid implements Rule
     public function passes($attribute, $value)
     {
         /* Validate GUID */
-        $data = DB::table($this->table)->select($this->id_field)->where($attribute, $value)->first();
+        $data = DB::table($this->table)->select($this->primary_key)->where($attribute, $value)->first();
         if(empty($data)){
             return FALSE;
         }
-        Session::flash($this->id_field, $data->id);
+        Session::flash($this->primary_key, $data->{$this->primary_key});
         return TRUE;
     }
 

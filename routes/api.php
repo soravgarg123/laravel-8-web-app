@@ -28,4 +28,5 @@ Route::group(['middleware' => 'auth.token'], function () {
     Route::post('configurations/update', [DashboardController::class, 'update_configurations']);
     Route::post('profile/update', [DashboardController::class, 'update_profile']);
     Route::post('change/password', [DashboardController::class, 'change_password']);
+    Route::post('reprocess/payment', [DashboardController::class, 'reprocess_payment']);
 });

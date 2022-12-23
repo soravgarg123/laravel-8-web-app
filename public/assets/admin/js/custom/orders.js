@@ -50,7 +50,7 @@ form_object.validate({
     },
     submitHandler: function() {
         $.ajax({
-            url: api_url + 'dashboard/reprocess_payment',
+            url: api_url + 'reprocess/payment',
             type:"POST",
             data: $('.reprocess-order-form').serialize(),
             success: function(resp){

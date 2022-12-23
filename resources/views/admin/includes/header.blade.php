@@ -1,6 +1,6 @@
-<?php 
+@php
     $website_name = session('configurations')['website_name'];
-?>
+@endphp
 <!DOCTYPE html>
     <head>
         <title>{{$website_name}} :: {{ isset($title) ? $title : 'Admin' }}</title>  
